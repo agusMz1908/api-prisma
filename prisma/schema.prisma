@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//Crea una tabla Post con un id autoincremental, lo define como clave primaria,
+//luego 2 campos de tipo String, que son el titulo y el contenido del post
+model Post {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(255)
+  content String
+}
